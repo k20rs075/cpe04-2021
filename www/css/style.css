@@ -28,6 +28,12 @@ button{
   font-weight: bold;
 }
 
+#btnD{
+  background: yellow;
+  color: green;
+  font-weight: bold;
+}
+
 
 #time{
   box-shadow: 5px 5px 5px;
@@ -93,6 +99,11 @@ button{
     #btnC {
         font-size: 20px;
         position:absolute; top:380px; left:50%; width:25%; height:60px; 
+    }
+
+    #btnD {
+        font-size: 20px;
+        position:absolute; top:380px; left:75%; width:25%; height:60px; 
     }
     
     #minute {

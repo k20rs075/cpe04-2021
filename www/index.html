@@ -38,6 +38,10 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+
+        $('#btnD').click(function(e) {
+            btnDClick(e);
+        });
         init();
     });
     
@@ -157,6 +161,7 @@
     var sec = 0;
     var min2 = 0;
     var sec2 = 0;
+    var subu = 0;
 
     
     // ボタンの初期設定
@@ -164,6 +169,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
+        $('#btnD').prop('disabled', false);
         
     }
 
@@ -197,10 +203,18 @@
     function btnCClick(e){
         //alarm();
         active = false;
-       min =  parseInt( $("#minute").val() ); 
-       sec = parseInt( $("#second").val() );
+        min =  parseInt( $("#minute").val() ); 
+        sec = parseInt( $("#second").val() );
         $("#time").html("24秒タイマー： 24");
         $("#remain").html("メインタイマー： " + min + ":" + sec);
+    }
+
+    // ButtonDがクリックされた時の処理
+    function btnDClick(e){
+        //active = false;
+        subu = 24;
+        $("#time").html("24秒タイマー： 24");
+        
     }
 
 
@@ -208,7 +222,7 @@
     function timer(){  
         if(active){
           var time = parseInt( (new Date() - startTime)/1000 );
-          var subu = 24-time;
+          subu = 24-time;
           var now = 60 * min + sec;
           var rest = now - time;
           sec2 = rest % 60;
@@ -236,7 +250,8 @@
     <div id="time">Time</div>
     <button id="btnA">Start</button>  
     <button id="btnB">Stop</button>  
-    <button id="btnC">Set</button>  
+    <button id="btnC">Set</button>
+    <button id="btnD">24s</button>  
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
 </body>
