@@ -157,8 +157,6 @@
     var sec = 0;
     var min2 = 0;
     var sec2 = 0;
-    var subu = 24;
-
 
     
     // ボタンの初期設定
@@ -201,8 +199,8 @@
         active = false;
        min =  parseInt( $("#minute").val() ); 
        sec = parseInt( $("#second").val() );
-        $("#time").html("時間経過： 0");
-        $("#remain").html("残り時間： " + min + ":" + sec);
+        $("#time").html("24秒タイマー： 24");
+        $("#remain").html("メインタイマー： " + min + ":" + sec);
     }
 
 
@@ -210,12 +208,13 @@
     function timer(){  
         if(active){
           var time = parseInt( (new Date() - startTime)/1000 );
+          var subu = 24-time;
           var now = 60 * min + sec;
           var rest = now - time;
           sec2 = rest % 60;
           min2 = (rest - sec2) / 60;
-          $("#time").html("経過時間： " + time);
-          $("#remain").html("残り時間： " + min2 + ":" + sec2);
+          $("#time").html("24秒タイマー： " + subu);
+          $("#remain").html("メインタイマー： " + min2 + ":" + sec2);
           analog(rest);
           if(rest <= 0){
             active = false;
