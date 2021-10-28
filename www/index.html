@@ -153,6 +153,11 @@
     var active = false;
     var startTime = 0;
     var period = 0;
+    var min = 0;
+    var sec = 0;
+    var min2 = 0;
+    var sec2 = 0;
+    var subu = 24;
 
 
     
@@ -194,17 +199,23 @@
     function btnCClick(e){
         //alarm();
         active = false;
-        period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
+       min =  parseInt( $("#minute").val() ); 
+       sec = parseInt( $("#second").val() );
         $("#time").html("時間経過： 0");
-        $("#remain").html("残り時間： " + period);
+        $("#remain").html("残り時間： " + min + ":" + sec);
     }
+
+
     // 繰り返し実行する処理
     function timer(){  
         if(active){
           var time = parseInt( (new Date() - startTime)/1000 );
-          var rest = period - time;
+          var now = 60 * min + sec;
+          var rest = now - time;
+          sec2 = rest % 60;
+          min2 = (rest - sec2) / 60;
           $("#time").html("経過時間： " + time);
-          $("#remain").html("残り時間： " + rest + "s");
+          $("#remain").html("残り時間： " + min2 + ":" + sec2);
           analog(rest);
           if(rest <= 0){
             active = false;
