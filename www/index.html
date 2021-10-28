@@ -191,12 +191,13 @@
     function btnAClick(e){
         active = true;
         startTime = new Date();
+        
     }
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
-        
+
     }
 
     // ButtonCがクリックされた時の処理
@@ -212,17 +213,17 @@
     // ButtonDがクリックされた時の処理
     function btnDClick(e){
         //active = false;
-        subu = 24;
-        $("#time").html("24秒タイマー： 24");
-        
-    }
+        active = true;
+        var time = parseInt( (new Date() - startTime)/1000 );
+        $("#time").html("経過時間： " + time);
+        }
 
 
     // 繰り返し実行する処理
     function timer(){  
         if(active){
           var time = parseInt( (new Date() - startTime)/1000 );
-          subu = 24-time;
+          subu = 24- time;
           var now = 60 * min + sec;
           var rest = now - time;
           sec2 = rest % 60;
@@ -238,6 +239,7 @@
         
     } 
 
+
   </script>
 </head>
 <body>
@@ -251,7 +253,7 @@
     <button id="btnA">Start</button>  
     <button id="btnB">Stop</button>  
     <button id="btnC">Set</button>
-    <button id="btnD">24s</button>  
+    <button id="btnD">Re</button>  
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
 </body>
